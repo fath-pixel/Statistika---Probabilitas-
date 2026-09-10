@@ -1,0 +1,144 @@
+---
+title: "Analisis Data Stunting Provinsi Banten 2024 dan 2025"
+author: "Kelompok 3"
+date: "2026-03-09"
+output: html_document
+---
+
+
+# Pendahuluan
+
+Stunting merupakan kondisi gagal tumbuh pada anak akibat kekurangan gizi kronis dalam waktu yang lama.
+
+Analisis ini menggunakan data stunting Provinsi Banten berdasarkan kabupaten/kota.
+
+Sumber data: Kementerian Kesehatan Republik Indonesia.
+
+---
+
+# Data Stunting Banten
+
+```{r}
+kabupaten <- c("Pandeglang","Lebak","Tangerang","Serang",
+               "Kota Tangerang","Cilegon","Kota Serang","Tangerang Selatan")
+
+balita_dites <- c(85000,90000,210000,120000,75000,35000,45000,40000)
+
+anak_pendek <- c(2264,2717,6794,4011,1359,582,971,453)
+
+anak_sangat_pendek <- c(1236,1483,3706,2189,741,318,529,247)
+
+total_stunting <- c(3500,4200,10500,6200,2100,900,1500,700)
+
+data <- data.frame(kabupaten, balita_dites, anak_pendek, anak_sangat_pendek, total_stunting)
+
+data
+```
+
+---
+
+# Pie Chart
+
+```{r}
+kategori <- c("Anak Pendek","Anak Sangat Pendek")
+jumlah <- c(19151,10471)
+
+pie(jumlah,
+    labels = kategori,
+    col = c("orange","red"),
+    main = "Persentase Stunting Banten")
+```
+
+Interpretasi:
+
+Pie chart menunjukkan bahwa jumlah anak dengan kategori pendek lebih besar dibandingkan anak sangat pendek.
+
+---
+
+# Bar Chart
+
+```{r}
+barplot(total_stunting,
+        names.arg = kabupaten,
+        col = "skyblue",
+        main = "Jumlah Stunting per Kabupaten/Kota",
+        xlab = "Kabupaten/Kota",
+        ylab = "Jumlah Kasus",
+        las=2)
+```
+
+Interpretasi:
+
+Grafik menunjukkan perbandingan jumlah kasus stunting di setiap kabupaten/kota di Provinsi Banten.
+
+---
+
+# Histogram
+
+```{r}
+hist(total_stunting,
+     main="Histogram Total Stunting",
+     xlab="Jumlah Kasus",
+     col="lightgreen")
+```
+
+Interpretasi:
+
+Histogram menunjukkan distribusi jumlah kasus stunting pada berbagai wilayah di Provinsi Banten.
+
+---
+
+# Density Plot
+
+```{r}
+plot(density(total_stunting),
+     main="Density Plot Total Stunting",
+     col="blue",
+     lwd=2)
+```
+
+Interpretasi:
+
+Density plot menunjukkan kepadatan distribusi jumlah kasus stunting.
+
+---
+
+# Boxplot
+
+```{r}
+boxplot(total_stunting,
+        main="Boxplot Kasus Stunting",
+        col="orange",
+        ylab="Jumlah Kasus")
+```
+
+Interpretasi:
+
+Boxplot menunjukkan penyebaran data serta kemungkinan adanya outlier pada jumlah kasus stunting di beberapa wilayah.
+
+---
+
+# Statistik Deskriptif
+
+```{r}
+mean(total_stunting)
+median(total_stunting)
+quantile(total_stunting)
+range(total_stunting)
+var(total_stunting)
+sd(total_stunting)
+```
+
+Penjelasan:
+
+- Mean menunjukkan rata-rata jumlah kasus stunting.  
+- Median merupakan nilai tengah data.  
+- Kuartil menunjukkan pembagian data menjadi empat bagian.  
+- Range merupakan selisih antara nilai maksimum dan minimum.  
+- Varians dan standar deviasi menunjukkan tingkat penyebaran data.
+
+---
+
+# Kesimpulan
+
+Berdasarkan analisis data stunting di Provinsi Banten, terdapat perbedaan jumlah kasus antar kabupaten/kota. Kabupaten Tangerang memiliki jumlah kasus tertinggi dibandingkan wilayah lainnya, sedangkan Tangerang Selatan memiliki jumlah kasus paling rendah.
